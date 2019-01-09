@@ -284,6 +284,22 @@ def getKoreanKosdaqRealData(list_shcode):
 
     return hoga_handler, chegyul_handler, counter_handler
 
+
+def getGatheringInstance():
+    """
+    나중에 옵션을 주어서 원하는 종목들만 받아올 수 있게 개선
+    :return:
+    """
+    df_info = getKoreanKosdaqInfo()
+
+    list_shcode = df_info.loc[:, '단축코드'] # 전 종목 가져오기
+    list_shcode = list(list_shcode)
+
+    h1, h2, h3 = getKoreanKosdaqRealData(list_shcode)
+
+    return h1, h2, h3
+
+
 if __name__ == "__main__":
     import Apis.Login
 

@@ -245,7 +245,7 @@ class KoreanKospiCounter(AbsReal):  ## 해외선물 체결
     def start(self):
         AbsReal.start(self, self.code)
 
-def getKoreanKosdaqInfo():
+def getKoreanKospiInfo():
     info_handler = KoreanKospiInfo.getInstance()
     info_handler.start()
     info_handler.singleRequest(1) # 0 :전체 1: 코스피 2: 코스닥
@@ -282,11 +282,26 @@ def getKoreanKospiRealData(list_shcode):
 
     return hoga_handler, chegyul_handler, counter_handler
 
+
+def getGatheringInstance():
+    """
+    나중에 옵션을 주어서 원하는 종목들만 받아올 수 있게 개선
+    :return:
+    """
+    df_info = getKoreanKospiInfo()
+
+    list_shcode = df_info.loc[:, '단축코드']  # 전 종목 가져오기
+    list_shcode = list(list_shcode)
+
+    h1, h2, h3 = getKoreanKospiRealData(list_shcode)
+
+    return h1, h2, h3
+
 if __name__ == "__main__":
     import Apis.Login
 
     Apis.Login.do_login(True)
-    df_info = getKoreanKosdaqInfo()
+    df_info = getKoreanKospiInfo()
 
     list_shcode = df_info.loc[:, '단축코드'] # 전 종목 가져오기
     list_shcode = list(list_shcode)

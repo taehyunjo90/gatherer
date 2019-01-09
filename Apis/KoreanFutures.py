@@ -180,7 +180,7 @@ def getWholeKoreanFuturesInfo():
     return df_whole
 
 
-def getForeignFuturesRealData(list_futcode):
+def getKoreanFuturesRealData(list_futcode):
     hoga_handler = KoreanFuturesHoga.getInstance()
     hoga_handler.start()
 
@@ -198,6 +198,20 @@ def getForeignFuturesRealData(list_futcode):
     return hoga_handler, chegyul_handler
 
 
+def getGatheringInstance():
+    """
+    나중에 옵션을 주어서 원하는 종목들만 받아올 수 있게 개선
+    :return:
+    """
+    df_info = getWholeKoreanFuturesInfo()
+
+    list_futcode = df_info.loc[:, '단축코드'] # 전 종목 가져오기
+    list_futcode = list(list_futcode)
+
+    h1, h2 = getKoreanFuturesRealData(list_futcode)
+    return h1, h2
+
+
 if __name__ == "__main__":
     import Apis.Login
 
@@ -207,7 +221,7 @@ if __name__ == "__main__":
     list_futcode = df_info.loc[:, '단축코드'] # 전 종목 가져오기
     list_futcode = list(list_futcode)
 
-    kfh, kfc = getForeignFuturesRealData(list_futcode)
+    kfh, kfc = getKoreanFuturesRealData(list_futcode)
 
     while True:
         pythoncom.PumpWaitingMessages()

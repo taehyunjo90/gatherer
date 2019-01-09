@@ -143,7 +143,7 @@ class KoreanOptionChegyul(AbsReal):  ## 해외선물 체결
     def start(self):
         AbsReal.start(self, self.code)
 
-def getKoreanFuturesInfo():
+def getKoreanOptionInfo():
     info_handler = KoreanOptionInfo.getInstance()
     info_handler.start()
     info_handler.singleRequest(0)
@@ -159,7 +159,7 @@ def getKoreanFuturesInfo():
     return df_data
 
 
-def getForeignFuturesRealData(list_optcode):
+def getKoreanOptionRealData(list_optcode):
     hoga_handler = KoreanOptionHoga.getInstance()
     hoga_handler.start()
 
@@ -176,16 +176,31 @@ def getForeignFuturesRealData(list_optcode):
 
     return hoga_handler, chegyul_handler
 
-if __name__ == "__main__":
-    import Apis.Login
 
-    Apis.Login.do_login(True)
-    df_info = getKoreanFuturesInfo()
+def getGatheringInstance():
+    """
+    나중에 옵션을 주어서 원하는 종목들만 받아올 수 있게 개선
+    :return:
+    """
+    df_info = getKoreanOptionInfo()
 
     list_optcode = df_info.loc[:, '단축코드'] # 전 종목 가져오기
     list_optcode = list(list_optcode)
 
-    koh, koc = getForeignFuturesRealData(list_optcode)
+    h1, h2 = getKoreanOptionRealData(list_optcode)
+    return h1, h2
+
+
+if __name__ == "__main__":
+    import Apis.Login
+
+    Apis.Login.do_login(True)
+    df_info = getKoreanOptionInfo()
+
+    list_optcode = df_info.loc[:, '단축코드'] # 전 종목 가져오기
+    list_optcode = list(list_optcode)
+
+    koh, koc = getKoreanOptionRealData(list_optcode)
 
     while True:
         pythoncom.PumpWaitingMessages()

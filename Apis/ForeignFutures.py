@@ -206,6 +206,23 @@ def getForeignFuturesRealData(list_symbol):
     return hoga_handler, chegyul_handler
 
 
+def getGatheringInstance():
+    """
+    나중에 옵션을 주어서 원하는 종목들만 받아올 수 있게 개선
+    :return:
+    """
+
+    df_foreign_futures_info = getForeignFuturesInfo()
+
+    list_symbols = df_foreign_futures_info.loc[:,'종목코드'] #전 종목 가져오기
+    list_symbols = list(list_symbols)
+
+    h1, h2 = getForeignFuturesRealData(list_symbols)
+    return h1,h2
+
+
+
+
 if __name__ == "__main__":
     import Apis.Login
 
