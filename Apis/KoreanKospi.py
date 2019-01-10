@@ -89,6 +89,8 @@ class KoreanKospiHoga(AbsReal):  ## 해외 선물 호가
         self.data.append(self.GetFieldData("OutBlock", "donsigubun"))
         self.data.append(self.GetFieldData("OutBlock", "alloc_gubun"))
 
+        # print(self.data)
+
         self.writer.writerow(self.data)
         self.f.flush()
 

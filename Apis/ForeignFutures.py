@@ -122,6 +122,9 @@ class ForeignFuturesHoga(AbsReal):  ## 해외 선물 호가
         self.data.append(self.GetFieldData("OutBlock", "totofferrem"))
         self.data.append(self.GetFieldData("OutBlock", "totbidrem"))
 
+        # if self.data[0] == "HSIF19":
+        #     print(self.data)
+
         self.writer.writerow(self.data)
         self.f.flush()
 
@@ -161,6 +164,9 @@ class ForeignFuturesChegyul(AbsReal):  ## 해외선물 체결
         self.data.append(self.GetFieldData("OutBlock", "mdvolume"))
         self.data.append(self.GetFieldData("OutBlock", "msvolume"))
         self.data.append(self.GetFieldData("OutBlock", "ovsmkend"))
+
+        # if self.data[0] == "HSIF19":
+        #     print(self.data)
 
         self.writer.writerow(self.data)
         self.f.flush()
