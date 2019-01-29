@@ -1,38 +1,35 @@
 from Apis import Login
-
-from Apis import ForeignFutures
-from Apis import ForeignOption
-
-from Apis import KoreanFutures
-from Apis import KoreanOption
-
-from Apis import KoreanKospi
-from Apis import KoreanKosdaq
-
+from Apis import Multi
 import pythoncom
+import sys
+
+from multiprocessing import Process
 
 
 if __name__ == "__main__":
 
-    # 로그인
-    Login.do_login(True)
+    p0 = Process(target=Multi.doKosdaq)
+    p1 = Process(target=Multi.doKospi)
+    p2 = Process(target=Multi.doKoreanDerivatiesAndForeignFutures)
 
-    # 해외 선물
-    ffh, ffc = ForeignFutures.getGatheringInstance()
+    p0.start()
+    p1.start()
+    p2.start()
 
-    # 국내 선물
-    kfh, kfc = KoreanFutures.getGatheringInstance()
+    p0.join()
+    p1.join()
+    p2.join()
 
-    # 국내 옵션
-    koh, koc = KoreanOption.getGatheringInstance()
 
-    # 국내 주식(코스피)
-    ksdh, ksdc, ksdco = KoreanKosdaq.getGatheringInstance()
 
-    # 국내 주식(코스닥)
-    ksph, kspc, kspco = KoreanKospi.getGatheringInstance()
 
-    while True:
-        pythoncom.PumpWaitingMessages()
+
+
+
+
+
+
+
+
 
 
