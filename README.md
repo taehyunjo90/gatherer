@@ -2,26 +2,38 @@
 
 ![File:Charles Sillem Lidderdale The fern gatherer 1877.jpg](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Charles_Sillem_Lidderdale_The_fern_gatherer_1877.jpg/415px-Charles_Sillem_Lidderdale_The_fern_gatherer_1877.jpg)
 
+
+
 # 개요
 
-이베스트증권 API를 활용하여 실시간 시장 데이터 수집을 하는 도구입니다.  
-현재 수집 가능한 데이터는 다음과 같습니다.   
+이베스트증권 API를 활용하여 실시간 시장 데이터 수집을 하는 도구입니다.
+
+현재 수집 가능한 데이터는 다음과 같습니다.  
+
+
 
 - 대한민국 코스피, 코스닥 **호가, 체결, 거래원 틱 데이터**
 - 대한민국 파생상품 선물/옵션 **호가, 체결 틱 데이터**
 - 해외 선물 **호가, 체결 틱 데이터**
-- 해외 옵션 **호가, 체결 틱 데이터** <u><현재 작동하지 않음></u>  
-  
+- 해외 옵션 **호가, 체결 틱 데이터** <u><현재 작동하지 않음></u>
+
+
+
 <u>현재의 기능상으로는 전체 종목을 수집하게 되어 있습니다. 이는 차후에 업데이트에서 원하는 종목만 수집하는 기능을 추가할 예정입니다.</u>
+
+
+
+
 
 # 빠른 실행
 
-** 대부분의 코드는 ["파이썬으로 배우는 알고리즘 트레이딩"](https://wikidocs.net/book/110)을 참조하여 작성되었습니다. 자세한 사항은 이를 참조 부탁드리겠습니다.  
-
+** 대부분의 코드는 ["파이썬으로 배우는 알고리즘 트레이딩"](https://wikidocs.net/book/110)을 참조하여 작성되었습니다. 자세한 사항은 이를 참조 부탁드리겠습니다.
 
 
 
 **0) 이베스트 API가 설치 및 사용신청이 선행되어야 합니다.**
+
+
 
 **1) 최상위 폴더에 다음과 같은 내용으로 CONFIG.PY을 생성합니다.**
 
@@ -64,6 +76,17 @@ p1.join()
 
 
 **3) 올바르게 실행되었다면 제대로 실행되었다는 프롬프트 메세지가 출력되고, 원하는 실시간 데이터가 CONFIG.py에 지정된 경로에 저장됩니다.**
+
+
+
+```
+로그인 성공 :: 0000 :: 로그인 성공
+로그인 성공 :: 0000 :: 로그인 성공
+2019-01-30 07:50:06,733 - Apis.KoreanKosdaq - INFO - Get korean stock(KOSDAQ) info successfully
+2019-01-30 07:50:06,764 - Apis.KoreanKospi - INFO - Get korean stock(KOSPI) info successfully
+2019-01-30 07:50:06,904 - Apis.KoreanKosdaq - INFO - Added korean stock(KOSDAQ) codes well :: total codes are 1326.
+2019-01-30 07:50:06,951 - Apis.KoreanKospi - INFO - Added korean stock(KOSPI) codes well :: total codes are 1524.
+```
 
 
 
