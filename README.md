@@ -38,12 +38,12 @@
 **1) 최상위 폴더에 다음과 같은 내용으로 CONFIG.PY을 생성합니다.**
 
 ```
-LOGININFO = {'ID' : 이베스트아이디,
-             'PW' : 비밀번호,
-             'CERTPW' : 공인인증서비밀번호}
+LOGININFO = {'ID' : 이베스트아이디, // string type
+             'PW' : 비밀번호, // string type
+             'CERTPW' : 공인인증서비밀번호} // string type
              
 IOINFO = {
-    'PATH' : 저장경로 (ex "D:\\MARKETDATA\\")
+    'PATH' : 저장경로 // (ex "D:\\MARKETDATA\\" -> string type)
 }
 
 TIMEINFO={
