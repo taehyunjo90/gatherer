@@ -211,7 +211,6 @@ def getForeignFuturesRealData(list_symbol):
 
     return hoga_handler, chegyul_handler
 
-
 def getGatheringInstance():
     """
     나중에 옵션을 주어서 원하는 종목들만 받아올 수 있게 개선
@@ -225,9 +224,6 @@ def getGatheringInstance():
 
     h1, h2 = getForeignFuturesRealData(list_symbols)
     return h1,h2
-
-
-
 
 if __name__ == "__main__":
     import Apis.Login
