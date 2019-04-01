@@ -60,6 +60,7 @@ class KoreanFuturesHoga(AbsReal):  ## 해외 선물 호가
     def OnReceiveRealData(self, tr_code):
         self.data = []
 
+        self.data.append("hoga")
         self.data.append(self.GetFieldData("OutBlock", "futcode"))
         self.data.append(time.time())  # Computer Time
         self.data.append(self.GetFieldData("OutBlock", "hotime"))
@@ -89,7 +90,7 @@ class KoreanFuturesHoga(AbsReal):  ## 해외 선물 호가
         self.f.flush()
 
     def _open_file(self):  # I/O
-        AbsReal._open_file(self, "KOREANFUTURES", "KOREANFUTURES_HOGA")
+        AbsReal._open_file(self, "KOREANFUTURES", "KOREANFUTURES")
 
     def start(self):
         AbsReal.start(self, self.code)
@@ -103,6 +104,8 @@ class KoreanFuturesChegyul(AbsReal):  ## 해외선물 체결
 
     def OnReceiveRealData(self, tr_code):  # event handler
         self.data = []
+
+        self.data.append("chegyul")
         self.data.append(self.GetFieldData("OutBlock", "futcode"))
         self.data.append(time.time())
         self.data.append(self.GetFieldData("OutBlock", "chetime"))
@@ -138,7 +141,7 @@ class KoreanFuturesChegyul(AbsReal):  ## 해외선물 체결
         self.f.flush()
 
     def _open_file(self):  # I/O
-        AbsReal._open_file(self, "KOREANFUTURES", "KOREANFUTURES_CHEGYUL")
+        AbsReal._open_file(self, "KOREANFUTURES", "KOREANFUTURES")
 
     def start(self):
         AbsReal.start(self, self.code)
