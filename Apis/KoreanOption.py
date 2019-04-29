@@ -89,7 +89,7 @@ class KoreanOptionHoga(AbsReal):  ## 해외 선물 호가
         self.f.flush()
 
     def _open_file(self):  # I/O
-        AbsReal._open_file(self, "KOREANOPTION", "KOREANOPTION_HOGA")
+        AbsReal._open_file(self, "KOREANOPTION", "KOREANOPTION_TOTAL")
 
     def start(self):
         AbsReal.start(self, self.code)
@@ -138,7 +138,7 @@ class KoreanOptionChegyul(AbsReal):  ## 해외선물 체결
         self.f.flush()
 
     def _open_file(self):  # I/O
-        AbsReal._open_file(self, "KOREANOPTION", "KOREANOPTION_CHEGYUL")
+        AbsReal._open_file(self, "KOREANOPTION", "KOREANOPTION_TOTAL")
 
     def start(self):
         AbsReal.start(self, self.code)
