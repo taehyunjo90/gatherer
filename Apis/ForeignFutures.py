@@ -129,7 +129,7 @@ class ForeignFuturesHoga(AbsReal):  ## 해외 선물 호가
         self.f.flush()
 
     def _open_file(self):  # I/O
-        AbsReal._open_file(self, "FOREIGNFUTURES", "FOREIGNFUTURES_HOGA")
+        AbsReal._open_file(self, "FOREIGNFUTURES", "FOREIGNFUTURES_TOTAL")
 
     def start(self):
         AbsReal.start(self, self.code)
@@ -172,7 +172,7 @@ class ForeignFuturesChegyul(AbsReal):  ## 해외선물 체결
         self.f.flush()
 
     def _open_file(self):  # I/O
-        AbsReal._open_file(self, "FOREIGNFUTURES", "FOREIGNFUTURES_CHEGYUL")
+        AbsReal._open_file(self, "FOREIGNFUTURES", "FOREIGNFUTURES_TOTAL")
 
     def start(self):
         AbsReal.start(self, self.code)
